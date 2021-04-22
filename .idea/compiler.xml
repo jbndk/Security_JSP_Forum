@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Cupcakes Claes" />
+        <module name="PrivatCupcake" />
+        <module name="CupcakesClaes" />
+        <module name="407CC" />
+        <module name="CC Forum" />
+        <module name="RunningCC" />
+        <module name="TempCupcake" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="407CC" options="-endorseddirs C:\Users\Jonas\Desktop\Sem4\Security\407CC\target/endorsed" />
+      <module name="CC Forum" options="-endorseddirs &quot;C:\Users\Jonas\Desktop\Sem4\Security\CC Forum\target/endorsed&quot;" />
+      <module name="Cupcakes Claes" options="-endorseddirs &quot;C:\Datamatiker\2.semester\Cupcakes Claes\target/endorsed&quot;" />
+      <module name="CupcakesClaes" options="-endorseddirs C:\Datamatiker\2.semester\CupcakesClaes\target/endorsed" />
+      <module name="PrivatCupcake" options="-endorseddirs C:\Datamatiker\2.semester\PrivatCupcake\target/endorsed" />
+      <module name="RunningCC" options="-endorseddirs C:\Datamatiker\2.semester\RunningCC\target/endorsed" />
+      <module name="TempCupcake" options="-endorseddirs C:\Datamatiker\2.semester\TempCupcake\target/endorsed" />
+    </option>
+  </component>
+</project>
