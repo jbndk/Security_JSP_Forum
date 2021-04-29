@@ -63,8 +63,9 @@ public class OrderMapper {
                 String category = rs.getString("category");
                 String content = rs.getString("content");
                 String author = rs.getString("author");
+                String filePath = rs.getString("filePath");
                 Timestamp time = rs.getTimestamp("created");
-                Post p = new Post(id, category, content, author, time);
+                Post p = new Post(id, category, content, author, filePath, time);
                 posts.add(p);
             }
 
@@ -78,11 +79,12 @@ public class OrderMapper {
     public static void addPost(Post p) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String sql = "INSERT INTO cupcake.posts (category, content, author) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO cupcake.posts (category, content, author, filePath) VALUES (?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( sql );
             ps.setString( 1, p.getCategory());
             ps.setString( 2, p.getContent());
             ps.setString( 3, p.getAuthor());
+            ps.setString(4, p.getFilePath());
 
             ps.executeUpdate();
 

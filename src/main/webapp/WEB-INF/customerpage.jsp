@@ -22,59 +22,57 @@
 %>
 
 
-        <h1>Hej ${sessionScope.email} </h1>
-        <br>
-        <div class="container"> ${requestScope.selection}</div>
-        <br>
-        <br>
-        <h2>Velkommen til vores forum!</h2>
+<h1>Hej ${sessionScope.email} </h1>
+<br>
+<div class="container"> ${requestScope.selection}</div>
+<br>
+<br>
+<h2>Velkommen til vores forum!</h2>
 <br>
 
 <div class="form-group">
-        <form name="addpost" action="FrontController" method="POST">
-                <input type="hidden" name="target" value="addpost">
+        <form name="uploadServlet" action="FrontController" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="target" value="uploadServlet">
 
-        <label for="exampleFormControlSelect1">Vælg kategori:</label>
-        <select class="form-control" name="category" id="exampleFormControlSelect1" style="width: 350px">
-                <c:forEach var="categories" items="${applicationScope.categories}">
-                        <option value="${categories.category}">${categories.category}</option>
-                </c:forEach>
+                <label for="exampleFormControlSelect1">Vælg kategori:</label>
+                <select class="form-control" name="category" id="exampleFormControlSelect1" style="width: 350px">
+                        <c:forEach var="categories" items="${applicationScope.categories}">
+                                <option value="${categories.category}">${categories.category}</option>
+                        </c:forEach>
 
-        </select>
+                </select>
 
 
-<div class="form-group">
-        <label for="content">Indlæg:</label>
-        <br>
-        <textarea id="content" name="content" rows="8" cols="50">
+                <div class="form-group">
+                        <label for="content">Indlæg:</label>
+                        <br>
+                        <textarea id="content" name="content" rows="8" cols="50">
         </textarea>
-</div>
+                </div>
 
-<div class="form-group">
-        <input type = "file" name = "file" size = "50" />
-        <br />
-        <input type = "submit" value = "Upload fil" />
-</div>
+                <div class="form-group">
+                        <input type = "file" name = "file" size = "50" />
+                </div>
 
 
-</th>
-<br>
+                </th>
+                <br>
 
-<th>
-        <div class="container">
-        <input class="btn btn-primary" type="submit" name="submit" value="Send"/>
-</div>
+                <th>
+                        <div class="container">
+                                <input class="btn btn-primary" type="submit" name="submit" value="Send"/>
+                        </div>
 
-<th>
-</form>
+                <th>
+        </form>
         <br>
         <h3>Forum:</h3>
         <form name="showAllPosts" method="post" action="FrontController">
                 <input type="hidden" name="target" value="showAllPosts">
                 <input id="showAllPosts" type="submit" name="showAllOrders" value="Vis indlæg">
         </form>
-</th>
-</th>
+        </th>
+        </th>
 
 
 <%@include file="../includes/footer.inc"%>

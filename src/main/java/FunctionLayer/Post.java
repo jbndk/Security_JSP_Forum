@@ -7,20 +7,23 @@ public class Post {
     private String category;
     private String content;
     private String author;
+    private String filePath;
     private Timestamp created;
 
-    public Post(int postID, String category, String content, String author, Timestamp created) {
+    public Post(int postID, String category, String content, String author, String filePath, Timestamp created) {
         this.postID = postID;
         this.category = category;
         this.content = content;
         this.author = author;
+        this.filePath = filePath;
         this.created = created;
     }
 
-    public Post(String category, String content, String author) {
+    public Post(String category, String content, String author, String filePath) {
         this.category = category;
         this.content = content;
         this.author = author;
+        this.filePath = filePath;
     }
 
     public int getPostID() {
@@ -61,5 +64,13 @@ public class Post {
 
     public void setCreated(Timestamp created) {
         this.created = created;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 }

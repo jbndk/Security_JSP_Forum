@@ -17,6 +17,7 @@
                 <th scope="col">Kategori</th>
                 <th scope="col">Indlæg</th>
                 <th scope="col">Forfatter</th>
+                <th scope="col">Fil</th>
                 <th scope="col">Oprettet</th>
 
             </tr>
@@ -30,6 +31,7 @@
                     <td>${posts.category}</td>
                     <td>${posts.content}</td>
                     <td>${posts.author}</td>
+                    <td><a href="${posts.filePath}">Link</a></td>
                     <td>${posts.created}</td>
                 </tr>
             </c:forEach>

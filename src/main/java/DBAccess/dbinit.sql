@@ -15,7 +15,8 @@ CREATE TABLE posts
   postID int(8) NOT NULL AUTO_INCREMENT,
   category varchar(90) NOT NULL,
   content TEXT NOT NULL,
-  author varchar(40) NOT NULL ,
+  author varchar(40) NOT NULL,
+  filePath varchar(150) NOT NULL,
   created TIMESTAMP default current_timestamp,
   PRIMARY KEY (postID)
 );

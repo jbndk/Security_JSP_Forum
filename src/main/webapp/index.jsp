@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@include file="includes/header.inc"%>
-    <h1 class="mt-4 text-center">Velkommen til Olsker Cupcakes</h1>
+    <h1 class="mt-4 text-center">Velkommen til Forum</h1>
 <h3 class="text-left">Log ind:</h3>
 
 <form name="login" action="FrontController" method="POST">
