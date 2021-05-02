@@ -31,7 +31,7 @@ CREATE TABLE users
 (
   userID int(4) NOT NULL AUTO_INCREMENT,
   email varchar(40) NOT NULL,
-  password varchar(12) NOT NULL,
+  password varchar(100) NOT NULL,
   role varchar(8) NOT NULL ,
   balance double,
   PRIMARY KEY (userID)

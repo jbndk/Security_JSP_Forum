@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class UserMapper {
 
-    public static void createUser( User user ) throws LoginSampleException {
+    public static void createUserUnsecure( User user ) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO cupcake.users (email, password, role) VALUES (?, ?, ?)";
@@ -31,24 +31,51 @@ public class UserMapper {
         }
     }
 
+    public static void createUser( User user ) throws LoginSampleException {
+        try {
+            System.out.println("createUser()");
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO cupcake.users (email, password, role) VALUES (?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+            ps.setString( 1, user.getEmail() );
+            ps.setString( 2, user.getPassword() );
+            ps.setString( 3, user.getRole() );
+            ps.executeUpdate();
+            ResultSet ids = ps.getGeneratedKeys();
+            ids.next();
+            int id = ids.getInt( 1 );
+            user.setUserID( id );
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            System.out.println("createUser() error");
+            throw new LoginSampleException( ex.getMessage() );
+        }
+    }
+
     public static User login( String email, String password ) throws LoginSampleException {
         try {
+            System.out.println("login()");
             Connection con = Connector.connection();
-            String SQL = "SELECT userID, role FROM cupcake.users "
-                    + "WHERE email=? AND password=?";
+            String SQL = "SELECT userID, role, password FROM cupcake.users "
+                    + "WHERE email=?";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setString( 1, email );
-            ps.setString( 2, password );
             ResultSet rs = ps.executeQuery();
             if ( rs.next() ) {
+                System.out.println("Linje 64");
                 String role = rs.getString( "role" );
+                System.out.println("Linje 66");
                 int id = rs.getInt( "userID" );
+                System.out.println("Linje 68");
                 User user = new User( email, password, role );
-                user.setUserID( id );
-
-                return user;
+                System.out.println("Linje 70");
+                String dbPassword = rs.getString( "password" );
+                if (user.verifyPassword(dbPassword)) {
+                    user.setUserID(id);
+                    return user;
+                } else
+                    throw new LoginSampleException( "Could not validate user" );
             } else {
-                throw new LoginSampleException( "Could not validate user" );
+                throw new LoginSampleException( "Could not find the user" );
             }
         } catch ( ClassNotFoundException | SQLException ex ) {
             throw new LoginSampleException(ex.getMessage());

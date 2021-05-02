@@ -1,8 +1,7 @@
 package FunctionLayer;
 
-/**
- * @author claes
- */
+import org.mindrot.jbcrypt.BCrypt;
+
 public class User {
 
     private int userID;
@@ -14,7 +13,7 @@ public class User {
     public User( int userID, String email, String password, String role, double balance ) {
         this.userID = userID;
         this.email = email;
-        this.password = password;
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt(12));
         this.role = role;
         this.balance = balance;
     }
@@ -50,12 +49,19 @@ public class User {
         this.email = email;
     }
 
+    public boolean verifyPassword(String pw) {
+        System.out.println("Verify Password");
+        System.out.println("PW: " + pw);
+        System.out.println("this.password: " + this.password);
+        return (BCrypt.checkpw(this.password, pw));
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt(12));
     }
 
     public String getRole() {

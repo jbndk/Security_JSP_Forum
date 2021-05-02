@@ -71,8 +71,15 @@
                 <input type="hidden" name="target" value="showAllPosts">
                 <input id="showAllPosts" type="submit" name="showAllOrders" value="Vis indlæg">
         </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <form name="logout" method="post" action="FrontController">
+                <input type="hidden" name="target" value="logout">
+                <input id="logout" type="submit" name="logout" value="Log ud">
+        </form>
         </th>
         </th>
-
 
 <%@include file="../includes/footer.inc"%>

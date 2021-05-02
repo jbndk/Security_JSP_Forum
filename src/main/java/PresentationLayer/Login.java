@@ -11,18 +11,24 @@ public class Login extends Command {
 
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
-        String email = request.getParameter( "email" );
-        String password = request.getParameter( "password" );
-        User user = LogicFacade.login( email, password );
+     try {
+         String email = request.getParameter("email");
+         String password = request.getParameter("password");
+         User user = LogicFacade.login(email, password);
 
-        HttpSession session = request.getSession();
+         HttpSession session = request.getSession();
 
-        session.setAttribute( "user", user );
-        session.setAttribute( "role", user.getRole() );
-        session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
-        session.setAttribute("userID", user.getUserID());
+         session.setAttribute("user", user);
+         session.setAttribute("role", user.getRole());
+         session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
+         session.setAttribute("userID", user.getUserID());
 
-        return user.getRole() + "page";
+         return user.getRole() + "page";
+
+     } catch (Exception e) {
+         System.out.println("Login error: " + e);
+         return "index";
+     }
     }
 
 }

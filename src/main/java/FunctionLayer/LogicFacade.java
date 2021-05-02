@@ -18,13 +18,16 @@ public class LogicFacade {
     }
 
     public static User createCustomer(String email, String password) throws LoginSampleException {
-        User user = new User(email, password, "customer", 0.00);
+        User user = new User(email, "", "customer", 0.00);
+        user.setPassword(password);
+        System.out.println("Hashed pw: " + user.getPassword());
         UserMapper.createUser(user);
         return user;
     }
 
     public static User createEmp(String email, String password) throws LoginSampleException {
-        User user = new User(email, password, "employee");
+        User user = new User(email, "", "employee");
+        user.setPassword(password);
         UserMapper.createUser(user);
         return user;
     }
