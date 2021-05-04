@@ -3,6 +3,7 @@
 <%@include file="includes/header.inc"%>
     <h1 class="mt-4 text-center">Velkommen til Forum</h1>
 <h3 class="text-left">Log ind:</h3>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 
 <form name="login" action="FrontController" method="POST">
 
@@ -15,6 +16,8 @@
 
     <label for="password">Password:</label>
     <input id="password" type="text" name="password" value="" align="left">
+    <div class="g-recaptcha"
+         data-sitekey="6LfGwsUaAAAAAEN3odtofvdC0EdjCPddtvnkCNlY"></div>
     </tr>
 
     <input type="submit" value="Log ind">
