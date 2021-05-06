@@ -37,7 +37,7 @@ public class Connector {
 
 
         } else {
-            URL = "jdbc:mysql://localhost/cupcake?serverTimezone=CET&useSSL=false";
+            URL = "jdbc:mysql://localhost/cupcake?serverTimezone=CET&allowPublicKeyRetrieval=true&useSSL=false";
             USERNAME = "dev";
             PASSWORD = "ax2";
         }

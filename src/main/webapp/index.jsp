@@ -1,8 +1,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@include file="includes/header.inc"%>
-    <h1 class="mt-4 text-center">Velkommen til Forum</h1>
-<h3 class="text-left">Log ind:</h3>
+    <h1 class="mt-4 text-left">Velkommen!</h1>
+<br>
+<h4 class="text-left">Log ind:</h4>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 
 <form name="login" action="FrontController" method="POST">
@@ -15,24 +16,25 @@
 
 
     <label for="password">Password:</label>
-    <input id="password" type="text" name="password" value="" align="left">
+    <input id="password" type="password" name="password" value="" align="left">
     <div class="g-recaptcha"
          data-sitekey="6LfGwsUaAAAAAEN3odtofvdC0EdjCPddtvnkCNlY"></div>
     </tr>
 
     <input type="submit" value="Log ind">
-
+    <br>
+    <br>
+    <hr>
 </form>
 
-
-    <br>
-    <h3 class="text-left">Opret bruger:</h3>
+    <h4 class="text-left">Opret bruger:</h4>
     <form name="register" action="FrontController" method="POST">
         <input type="hidden" name="target" value="newcustomer">
         Email: <input type="text" name="email" value="">
         Kodeord: <input type="password" name="password1" value="">
         Gentag kodeord:
         <input type="password" name="password2" value="">
+        <br><br>
         <input type="submit" value="Opret bruger">
     </form>
 </div>

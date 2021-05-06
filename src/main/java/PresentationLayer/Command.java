@@ -31,6 +31,8 @@ abstract class Command {
         commands.put("addpost", new AddPost());
         commands.put("showAllPosts", new ShowAllPosts());
         commands.put("uploadServlet", new UploadServlet());
+        commands.put("newPost", new NewPost());
+        commands.put("customerpage", new CustomerPage());
 
     }
 

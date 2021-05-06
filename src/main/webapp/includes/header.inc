@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Olsker cupcakes</title>
+    <title>Forum</title>
 </head>
 <body>
-<body style="background-color:powderblue;">
+<body style="background-color:white;">
+
 
 <div class="container">
 
-    <img src="images/cupcakes.png" class="img-fluid mb-4"/>
+    <img src="images/banner.png" class="img-fluid mb-4"/>

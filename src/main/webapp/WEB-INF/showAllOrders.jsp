@@ -4,6 +4,31 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@include file="../includes/header.inc"%>
 
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+
+            <nav class="navbar navbar-light bg-light">
+
+                <form class="form-inline" name="customerpage" method="post" action="FrontController">
+                    <input type="hidden" name="target" value="customerpage">
+                    <button class="btn btn-primary" type="submit" name="customerpage">Forsiden</button>
+                </form>
+
+                <form class="form-inline" name="newPost" method="post" action="FrontController">
+                    <input type="hidden" name="target" value="newPost">
+                    <button class="btn btn-primary" type="submit" name="newPost">Nyt indlæg</button>
+                </form>
+
+                <form class="form-inline" name="logout" method="post" action="FrontController">
+                    <input type="hidden" name="target" value="logout">
+                    <button class="btn btn-danger" type="submit" name="logout">Log ud</button>
+                </form>
+            </nav>
+        </div>
+    </div>
+
+
 <br>
 <h3>Forum</h3>
 <br>
@@ -38,10 +63,8 @@
             </tbody>
         </table>
 
-
-        <div class="text-center">
-            <a href="FrontController?target=redirect&destination=customerpage">Lav indlæg</a>
-        </div>
+        
     </div>
+</div>
     <%@include file="../includes/footer.inc"%>
 
