@@ -1,4 +1,4 @@
-<%@ page import="CupcakeUtil.Initializer" %><%--
+<%@ page import="Util.Initializer" %><%--
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,9 +16,9 @@
 
             <nav class="navbar navbar-light bg-light">
 
-                <form class="form-inline" name="customerpage" method="post" action="FrontController">
-                    <input type="hidden" name="target" value="customerpage">
-                    <button class="btn btn-primary" type="submit" name="customerpage">Forsiden</button>
+                <form class="form-inline" name="memberpage" method="post" action="FrontController">
+                    <input type="hidden" name="target" value="memberpage">
+                    <button class="btn btn-primary" type="submit" name="memberpage">Forsiden</button>
                 </form>
 
                 <form class="form-inline" name="showAllPosts" method="post" action="FrontController">
@@ -73,20 +73,6 @@
             </div>
 
         <th>
-    </form>
-    <br>
-    <h3>Forum:</h3>
-    <form name="showAllPosts" method="post" action="FrontController">
-        <input type="hidden" name="target" value="showAllPosts">
-        <input id="showAllPosts" type="submit" name="showAllOrders" value="Vis indlæg">
-    </form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <form name="logout" method="post" action="FrontController">
-        <input type="hidden" name="target" value="logout">
-        <input id="logout" type="submit" name="logout" value="Log ud">
     </form>
     </th>
     </th>

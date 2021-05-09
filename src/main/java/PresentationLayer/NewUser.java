@@ -1,6 +1,7 @@
 
 package PresentationLayer;
 
+import DBAccess.UserMapper;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
@@ -8,16 +9,17 @@ import FunctionLayer.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 
-public class NewEmployee extends Command {
+public class NewUser extends Command {
 
     @Override
-    String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
+    String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException, SQLException {
         String email = request.getParameter( "email" );
         String password1 = request.getParameter( "password1" );
         String password2 = request.getParameter( "password2" );
         if ( password1.equals( password2 ) ) {
-            User user = LogicFacade.createEmp( email, password1 );
+            User user = LogicFacade.createMember( email, password1 );
             HttpSession session = request.getSession();
 
             session.setAttribute("email",email);
@@ -28,4 +30,5 @@ public class NewEmployee extends Command {
             throw new LoginSampleException( "the two passwords did not match" );
         }
     }
+
 }

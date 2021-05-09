@@ -1,4 +1,4 @@
-<%@ page import="CupcakeUtil.Initializer" %><%--
+<%@ page import="Util.Initializer" %><%--
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -38,6 +38,7 @@
                 <br>
 <h3>Du er logget ind som:  ${sessionScope.email} </h3>
 <br>
+
 <div class="container"> ${requestScope.selection}</div>
 </div>
 <%@include file="../includes/footer.inc"%>

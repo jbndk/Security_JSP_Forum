@@ -1,4 +1,4 @@
-<%@ page import="DBAccess.OrderMapper" %>
+<%@ page import="DBAccess.PostMapper" %>
 <%@ page import="FunctionLayer.LoginSampleException" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
@@ -10,9 +10,9 @@
 
             <nav class="navbar navbar-light bg-light">
 
-                <form class="form-inline" name="customerpage" method="post" action="FrontController">
-                    <input type="hidden" name="target" value="customerpage">
-                    <button class="btn btn-primary" type="submit" name="customerpage">Forsiden</button>
+                <form class="form-inline" name="memberpage" method="post" action="FrontController">
+                    <input type="hidden" name="target" value="memberpage">
+                    <button class="btn btn-primary" type="submit" name="memberpage">Forsiden</button>
                 </form>
 
                 <form class="form-inline" name="newPost" method="post" action="FrontController">

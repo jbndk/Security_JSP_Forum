@@ -29,7 +29,7 @@
 
     <h4 class="text-left">Opret bruger:</h4>
     <form name="register" action="FrontController" method="POST">
-        <input type="hidden" name="target" value="newcustomer">
+        <input type="hidden" name="target" value="newuser">
         Email: <input type="text" name="email" value="">
         Kodeord: <input type="password" name="password1" value="">
         Gentag kodeord:

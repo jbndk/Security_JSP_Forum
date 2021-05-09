@@ -13,9 +13,9 @@
     <a href="FrontController?target=redirect&destination=customerpage">Lav nyt indlæg</a>
 </div>
 <br>
-<form name="logout" method="post" action="FrontController">
-    <input type="hidden" name="target" value="logout">
-    <input id="logout" type="submit" name="logout" value="Log af">
+<form name="memberpage" method="post" action="FrontController">
+    <input type="hidden" name="target" value="memberpage">
+    <input id="memberpage" type="submit" name="memberpage" value="Til forsiden">
 </form>
 
 <%@include file="../includes/footer.inc"%>

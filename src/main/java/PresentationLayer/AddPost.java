@@ -1,9 +1,8 @@
 package PresentationLayer;
 
-import DBAccess.OrderMapper;
+import DBAccess.PostMapper;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Post;
-import sun.reflect.annotation.ExceptionProxy;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +26,7 @@ public class AddPost extends Command {
 
             Post p = new Post(category, content, author, filePath);
 
-            OrderMapper.addPost(p);
+            PostMapper.addPost(p);
 
             return "confirmation";
 

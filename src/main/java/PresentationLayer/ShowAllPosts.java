@@ -25,6 +25,6 @@ public class ShowAllPosts extends Command {
 
         request.setAttribute("posts",posts);
 
-        return "showAllOrders";
+        return "showAllPosts";
     }
 }

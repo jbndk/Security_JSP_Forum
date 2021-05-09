@@ -2,40 +2,18 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
-
 import java.sql.*;
 import java.util.ArrayList;
 
 
-/**
- @author claes
- */
-
 public class UserMapper {
-
-    public static void createUserUnsecure( User user ) throws LoginSampleException {
-        try {
-            Connection con = Connector.connection();
-            String SQL = "INSERT INTO cupcake.users (email, password, role) VALUES (?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
-            ps.setString( 1, user.getEmail() );
-            ps.setString( 2, user.getPassword() );
-            ps.setString( 3, user.getRole() );
-            ps.executeUpdate();
-            ResultSet ids = ps.getGeneratedKeys();
-            ids.next();
-            int id = ids.getInt( 1 );
-            user.setUserID( id );
-        } catch ( SQLException | ClassNotFoundException ex ) {
-            throw new LoginSampleException( ex.getMessage() );
-        }
-    }
 
     public static void createUser( User user ) throws LoginSampleException {
         try {
             System.out.println("createUser()");
+            // Check if user exists:
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO cupcake.users (email, password, role) VALUES (?, ?, ?)";
+            String SQL = "INSERT INTO forum.users (email, password, role) VALUES (?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setString( 1, user.getEmail() );
             ps.setString( 2, user.getPassword() );
@@ -43,8 +21,6 @@ public class UserMapper {
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
-            int id = ids.getInt( 1 );
-            user.setUserID( id );
         } catch ( SQLException | ClassNotFoundException ex ) {
             System.out.println("createUser() error");
             throw new LoginSampleException( ex.getMessage() );
@@ -55,7 +31,7 @@ public class UserMapper {
         try {
             System.out.println("login()");
             Connection con = Connector.connection();
-            String SQL = "SELECT userID, role, password FROM cupcake.users "
+            String SQL = "SELECT role, password FROM forum.users "
                     + "WHERE email=?";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setString( 1, email );
@@ -64,13 +40,11 @@ public class UserMapper {
                 System.out.println("Linje 64");
                 String role = rs.getString( "role" );
                 System.out.println("Linje 66");
-                int id = rs.getInt( "userID" );
                 System.out.println("Linje 68");
                 User user = new User( email, password, role );
                 System.out.println("Linje 70");
                 String dbPassword = rs.getString( "password" );
                 if (user.verifyPassword(dbPassword)) {
-                    user.setUserID(id);
                     return user;
                 } else
                     throw new LoginSampleException( "Could not validate user" );
@@ -82,107 +56,20 @@ public class UserMapper {
         }
     }
 
-    public static void createEmp( User user ) throws LoginSampleException {
-        try {
-            Connection con = Connector.connection();
-            String SQL = "INSERT INTO cupcake.users (email, password, role, balance) VALUES (?, ?, ?,?)";
-            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
-            ps.setString( 1, user.getEmail() );
-            ps.setString( 2, user.getPassword() );
-            ps.setString( 3, user.getRole() );
-            ps.setDouble( 4, user.getBalance() );
-            ps.executeUpdate();
-            ResultSet ids = ps.getGeneratedKeys();
-            ids.next();
-            int id = ids.getInt( 1 );
-            user.setUserID( id );
-        } catch ( SQLException | ClassNotFoundException ex ) {
-            throw new LoginSampleException( ex.getMessage() );
-        }
-    }
-    public static void updateBalance(int userID, double beloebTilIndsaettelse) {
-        try {
-            Connection con = Connector.connection();
-            String SQL = "UPDATE cupcake.users SET balance = balance + ? WHERE userID = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setString(1, " " + beloebTilIndsaettelse);
-            ps.setString(2, " " + userID);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-    public static double getBalance(int userID) throws SQLException {
-        double balance = 0;
-        try {
-            Connection con = Connector.connection();
-            String SQL = "SELECT balance FROM cupcake.users "
-                    + "WHERE userID=?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1,userID);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                balance = rs.getDouble("balance");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return balance;
-    }
-    public static void payOrder(Double amount, int userID) throws LoginSampleException {
-        try {
-            Connection con = Connector.connection();
-            String SQL = "UPDATE cupcake.users SET balance = balance - ? WHERE userID = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setDouble(1, amount);
-            ps.setInt(2, userID);
-            ps.executeUpdate();
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
-        }
-    }
-
-
-    public static double showBalance(String email) throws SQLException {
-        double balance = 0;
-        try {
-            Connection con = Connector.connection();
-            String SQL = "SELECT balance FROM cupcake.users "
-                    + "WHERE email=?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setString(1, email);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                balance = rs.getDouble("balance");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return balance;
-    }
-    public static ArrayList<User> showAllCustomers() throws LoginSampleException  {
+    public static ArrayList<User> showAllMembers() throws LoginSampleException  {
         ArrayList<User> customerList= new ArrayList<>();
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM cupcake.users where role = 'customer'";
+            String SQL = "SELECT * FROM forum.users where role = 'member'";
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
-            User customer = null;
+            User member = null;
             while (rs.next()) {
-                int id = rs.getInt("userID");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
                 String role = rs.getString("role");
-                double balance = rs.getDouble("balance");
-                customer = new User(id,email, password, role, balance);
-                customerList.add(customer);
+                member = new User(email, password, role);
+                customerList.add(member);
             }
 
         } catch ( ClassNotFoundException | SQLException ex ) {
