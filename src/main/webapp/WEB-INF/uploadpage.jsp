@@ -19,7 +19,9 @@
     <div>Apache FileUpload</div>
     <form method="post" action="FrontController" enctype="multipart/form-data">
         <input type="hidden" name="target" value="uploadServlet2">
-        Choose a file: <input type="file" name="uploadFile"/><input type="submit" value="Upload"/>
+        Choose a file: <input type="file" name="uploadFile"/>
+        <br>
+        <input type="submit" value="Upload"/>
     </form>
 
     <br>

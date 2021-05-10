@@ -30,12 +30,18 @@
                         <input type="hidden" name="target" value="logout">
                         <button class="btn btn-danger" type="submit" name="logout">Log ud</button>
                 </form>
+
+            <form class="form-inline" name="uploadServlet2" method="post" action="FrontController">
+                <input type="hidden" name="target" value="uploadServlet2">
+                <button class="btn btn-primary" type="submit" name="uploadServlet2">Upload fil</button>
+                <p>  </p>
+            </form>
         </nav>
         </div>
         </div>
 
                 <br>
-    <a href="FrontController?target=redirect&destination=uploadpage">Upload fil</a>
+
                 <br>
 <h3>Du er logget ind som:  ${sessionScope.email} </h3>
 <br>
