@@ -1,11 +1,11 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -20,7 +20,7 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-@WebServlet(name = "UploadServlet2" )
+@WebServlet(name = "UploadServlet2")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1 MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 100 // 100 MB
@@ -50,20 +50,38 @@ public class UploadServlet2 extends Command {
         String fileName = "";
         String path = "C:\\ForumFiles\\";
 
+        List<String> extensions = Arrays.asList("jpg", "jpeg", "png", "JPG", "JPEG", "PNG");
+
         try {
             Part filePart = request.getPart("uploadFile");
             fileName = filePart.getSubmittedFileName();
-            for (Part part : request.getParts()) {
-                System.out.println(part.getName());
-                System.out.println(part.getSize());
-                System.out.println(part.getContentType());
-                part.write(path + fileName);
+            String[] fileNameSplits = fileName.split("\\.");
+            // extension is assumed to be the last part
+            int extensionIndex = fileNameSplits.length - 1;
+            System.out.println(Arrays.toString(fileNameSplits));
+            // add extension to id
+            //File newName = new File(path + "/" + id + "." + fileNameSplits[extensionIndex]);
+
+            if (extensions.contains(fileNameSplits[extensionIndex])) {
+                for (Part part : request.getParts()) {
+                    System.out.println(part.getName());
+                    System.out.println(part.getSize());
+                    System.out.println(part.getContentType());
+                    UUID uuid = UUID.randomUUID();
+                    part.write(path + uuid + "." + fileNameSplits[extensionIndex]);
+                    request.setAttribute("message", "File "
+                            + fileName + " was uploaded successfully!");
+                }
+            } else {
+                request.setAttribute("message", "Filetype is not supported/allowed ");
             }
 
+
         } catch (Exception e) {
+            request.setAttribute("message", "There was an error: ");
             System.out.println(e);
         }
-        request.setAttribute("message", "There was an error: ");
+
         return "uploadpage";
     }
 
