@@ -10,13 +10,21 @@ import javax.servlet.http.HttpSession;
 public class Logout extends Command {
 
     @Override
-    String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
-                HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
+
+        session.setAttribute("user", null);
+        session.setAttribute("role", null);
+        session.setAttribute("email", null);
+        response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Cache-Control", "no-store");
+        response.setHeader("Cache-Control", "private");
+        response.setDateHeader("Expires", -1);
+        response.setHeader("Pragma", "no-cache");
 
         session.invalidate();
 
-        return "index";
+        return "logout";
     }
-
 }

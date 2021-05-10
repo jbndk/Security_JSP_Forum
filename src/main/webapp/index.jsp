@@ -19,7 +19,6 @@
     <input id="password" type="password" name="password" value="" align="left">
     <div class="g-recaptcha"
          data-sitekey="6LfGwsUaAAAAAEN3odtofvdC0EdjCPddtvnkCNlY"></div>
-    </tr>
 
     <input type="submit" value="Log ind">
     <br>
@@ -37,5 +36,6 @@
         <br><br>
         <input type="submit" value="Opret bruger">
     </form>
-</div>
+<br>
+<p>"${requestScope.message}"</p>
 <%@include file="includes/footer.inc"%>

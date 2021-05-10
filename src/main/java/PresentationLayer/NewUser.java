@@ -18,7 +18,7 @@ public class NewUser extends Command {
         String email = request.getParameter( "email" );
         String password1 = request.getParameter( "password1" );
         String password2 = request.getParameter( "password2" );
-        if ( password1.equals( password2 ) ) {
+        if ( password1.equals( password2 ) && LogicFacade.isValidPassword(password1) ) {
             User user = LogicFacade.createMember( email, password1 );
             HttpSession session = request.getSession();
 
@@ -27,7 +27,11 @@ public class NewUser extends Command {
             session.setAttribute( "role", user.getRole() );
             return user.getRole() + "page";
         } else {
+            request.setAttribute("message", "There was an error, are you sure the password met the rules? ");
+            request.setAttribute("error", "There was an error: ");
             throw new LoginSampleException( "the two passwords did not match" );
+
+
         }
     }
 

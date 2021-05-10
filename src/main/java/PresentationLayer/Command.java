@@ -2,8 +2,10 @@ package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 
@@ -23,6 +25,7 @@ abstract class Command {
         commands.put("uploadServlet", new UploadServlet());
         commands.put("newPost", new NewPost());
         commands.put("memberpage", new MemberPage());
+        commands.put("uploadpage", new UploadServlet2());
 
     }
 
@@ -35,6 +38,6 @@ abstract class Command {
     }
 
     abstract String execute( HttpServletRequest request, HttpServletResponse response )
-            throws LoginSampleException, SQLException, ClassNotFoundException;
+            throws LoginSampleException, SQLException, ClassNotFoundException, ServletException, IOException;
 
 }

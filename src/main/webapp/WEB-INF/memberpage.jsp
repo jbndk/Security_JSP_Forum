@@ -35,6 +35,7 @@
         </div>
 
                 <br>
+    <a href="FrontController?target=redirect&destination=uploadpage">Upload fil</a>
                 <br>
 <h3>Du er logget ind som:  ${sessionScope.email} </h3>
 <br>

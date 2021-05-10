@@ -1,40 +1,70 @@
 package PresentationLayer;
+
 import FunctionLayer.LoginSampleException;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import java.io.IOException;
-import java.sql.SQLException;
 
-@WebServlet (name = "UploadServlet" )
-@MultipartConfig (fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+@WebServlet(name = "UploadServlet2" )
+@MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1 MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 100 // 100 MB
 )
-public class UploadServlet2 extends HttpServlet {
+
+
+public class UploadServlet2 extends Command {
+
+    // location to store file uploaded
+    public static final String DEFAULT_FILENAME = "ForumFiles";
+
+    // upload settings
+    private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;  // 3MB
+    private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
+    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
+    public static final String UPLOAD_DIRECTORY = "upload";
     String path = "C:\\ForumFiles\\";
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException , IOException {
+
+    /**
+     * Upon receiving file upload submission, parses the request to read
+     * upload data and saves the file on disk.
+     */
+
+    @Override
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ClassNotFoundException, ServletException, IOException {
+
+        String fileName = "";
+        String path = "C:\\ForumFiles\\";
+
         try {
-            System.out.println("Linje 23");
-            Part filePart = request.getPart("file");
-            System.out.println("Linje 25");
-            String fileName = filePart.getSubmittedFileName();
-            System.out.println("Linje 27");
+            Part filePart = request.getPart("uploadFile");
+            fileName = filePart.getSubmittedFileName();
             for (Part part : request.getParts()) {
+                System.out.println(part.getName());
+                System.out.println(part.getSize());
+                System.out.println(part.getContentType());
                 part.write(path + fileName);
             }
-            System.out.println("Linje 31");
+
         } catch (Exception e) {
-            System.out.println("Linje 33 - error:");
             System.out.println(e);
         }
-        request.getRequestDispatcher( "confirmation" ).forward(request, response);
+        request.setAttribute("message", "There was an error: ");
+        return "uploadpage";
     }
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException , IOException {
-    }
+
 }
