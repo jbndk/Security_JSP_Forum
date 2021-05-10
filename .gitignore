@@ -183,4 +183,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+src/main/java/Util/Constants.java
+
 # End of https://www.gitignore.io/api/java,macos,maven,windows,intellij

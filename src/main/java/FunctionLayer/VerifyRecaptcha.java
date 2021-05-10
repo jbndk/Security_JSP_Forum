@@ -1,6 +1,8 @@
 
 package FunctionLayer;
 
+import Util.Constants;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -16,7 +18,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class VerifyRecaptcha {
 
     public static final String url = "https://www.google.com/recaptcha/api/siteverify";
-    public static final String secret = "6LfGwsUaAAAAAAhsd9vWl6qg-mLm0IZn8V_a81KX";
+    public static final String secret = Constants.SECRET_KEY;
     private final static String USER_AGENT = "Mozilla/5.0";
 
     public static boolean verify(String gRecaptchaResponse) throws IOException {
