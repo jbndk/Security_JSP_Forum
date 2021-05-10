@@ -9,9 +9,7 @@
 
 <h1>Dit indlæg er nu tilføjet vores forum!</h1>
 
-<div class="text-center">
-    <a href="FrontController?target=redirect&destination=customerpage">Lav nyt indlæg</a>
-</div>
+
 <br>
 <form name="memberpage" method="post" action="FrontController">
     <input type="hidden" name="target" value="memberpage">

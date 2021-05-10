@@ -66,6 +66,7 @@ public class VerifyRecaptcha {
             JsonObject jsonObject = jsonReader.readObject();
             jsonReader.close();
 
+            System.out.println("jsonObject");
             return jsonObject.getBoolean("success");
         }catch(Exception e){
             e.printStackTrace();
