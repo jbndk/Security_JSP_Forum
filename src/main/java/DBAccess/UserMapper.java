@@ -2,6 +2,8 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import PresentationLayer.Log;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -45,13 +47,17 @@ public class UserMapper {
                 System.out.println("Linje 70");
                 String dbPassword = rs.getString( "password" );
                 if (user.verifyPassword(dbPassword)) {
+                    Log.info("Login by: " + user.getEmail());
                     return user;
                 } else
+                    Log.info("Login attempt, " + "Could not validate user: "+user.getEmail());
                     throw new LoginSampleException( "Could not validate user" );
             } else {
+                Log.info("Login attempt, unknown user.");
                 throw new LoginSampleException( "Could not find the user" );
             }
         } catch ( ClassNotFoundException | SQLException ex ) {
+            Log.severe("Exception:  "+ ex.getMessage());
             throw new LoginSampleException(ex.getMessage());
         }
     }

@@ -25,7 +25,7 @@
       <module name="CupcakesClaes" options="-endorseddirs C:\Datamatiker\2.semester\CupcakesClaes\target/endorsed" />
       <module name="PrivatCupcake" options="-endorseddirs C:\Datamatiker\2.semester\PrivatCupcake\target/endorsed" />
       <module name="RunningCC" options="-endorseddirs C:\Datamatiker\2.semester\RunningCC\target/endorsed" />
-      <module name="Security_JSP_Forum" options="-endorseddirs &quot;C:\Datamatiker\4.semester\Security\Sem projekt\Security_JSP_Forum\target/endorsed&quot;" />
+      <module name="Security_JSP_Forum" options="-endorseddirs &quot;C:\Datamatiker\4.semester\Security\Sem projekt\FinalExamnProj\Security_JSP_Forum\target/endorsed&quot;" />
       <module name="TempCupcake" options="-endorseddirs C:\Datamatiker\2.semester\TempCupcake\target/endorsed" />
     </option>
   </component>
