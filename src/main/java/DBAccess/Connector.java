@@ -37,7 +37,7 @@ public class Connector {
 
 
         } else {
-            URL = "jdbc:mysql://localhost:3306/forum?serverTimezone=CET&allowPublicKeyRetrieval=true&useSSL=false";
+            URL = "jdbc:mysql://localhost:3306/forum?serverTimezone=CET&useSSL=false";
             USERNAME = "dev";
             PASSWORD = "ax2";
         }

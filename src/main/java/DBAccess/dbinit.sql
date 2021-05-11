@@ -11,7 +11,7 @@ CREATE TABLE posts
   category varchar(90) NOT NULL,
   content TEXT NOT NULL,
   author varchar(40) NOT NULL,
-  filePath varchar(150) NOT NULL,
+  filePath varchar(1000) NOT NULL,
   created TIMESTAMP default current_timestamp,
   PRIMARY KEY (postID)
 );
@@ -31,4 +31,6 @@ CREATE TABLE users
 );
 
 INSERT INTO categories (category) VALUES ("Generelt");
-INSERT INTO categories (category) VALUES ("Salg af udstyr");
+INSERT INTO categories (category) VALUES ("Hjemmebrygning");
+INSERT INTO categories (category) VALUES ("Arrangementer");
+INSERT INTO categories (category) VALUES ("Anbefalinger");

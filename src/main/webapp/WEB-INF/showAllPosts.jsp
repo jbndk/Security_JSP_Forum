@@ -38,12 +38,12 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Kategori</th>
-                <th scope="col">Indlæg</th>
-                <th scope="col">Forfatter</th>
-                <th scope="col">Fil</th>
-                <th scope="col">Oprettet</th>
+                <th scope="col" style="width: 5%">ID</th>
+                <th scope="col" style="width: 15%">Kategori</th>
+                <th scope="col" style="width: 45%">Indlæg</th>
+                <th scope="col" style="width: 15%">Forfatter</th>
+                <th scope="col" style="width: 10%">Fil</th>
+                <th scope="col" style="width: 10%">Oprettet</th>
 
             </tr>
             </thead>

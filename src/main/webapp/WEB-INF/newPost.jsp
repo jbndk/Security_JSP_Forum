@@ -40,8 +40,8 @@
 <br>
 
 <div class="form-group">
-    <form name="uploadServlet" action="FrontController" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="target" value="uploadServlet">
+    <form action="FrontController" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="target" value="uploadServlet2">
 
         <label for="exampleFormControlSelect1">Vælg kategori:</label>
         <select class="form-control" name="category" id="exampleFormControlSelect1" style="width: 350px">
@@ -52,29 +52,23 @@
         </select>
 
 
-        <div class="form-group">
-            <label for="content">Indlæg:</label>
-            <br>
-            <textarea id="content" name="content" rows="8" cols="50">
-        </textarea>
-        </div>
-
-        <div class="form-group">
-            <input type = "file" name = "file" size = "50" />
-        </div>
-
-
-        </th>
         <br>
+        <label for="content">Indlæg:</label>
+        <br>
+        <textarea id="content" name="content" rows="8" cols="50"></textarea>
+        <br>
+        <br>
+        <h5>Upload et billede</h5>
+        <i>Tilladte formater: .jpg, .jpeg og .png</i>
+        <br>
+        <input type="file" name="uploadFile"/>
+        <br>
+        <br>
+        <input class="btn btn-primary" type="submit" name="submit" value="Send"/>
 
-        <th>
-            <div class="container">
-                <input class="btn btn-primary" type="submit" name="submit" value="Send"/>
-            </div>
 
-        <th>
     </form>
-    </th>
-    </th>
+</div>
+</div>
 
 <%@include file="../includes/footer.inc"%>

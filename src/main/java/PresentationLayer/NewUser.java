@@ -27,9 +27,9 @@ public class NewUser extends Command {
             session.setAttribute( "role", user.getRole() );
             return user.getRole() + "page";
         } else {
-            request.setAttribute("message", "There was an error, are you sure the password met the rules? ");
-            request.setAttribute("error", "There was an error: ");
-            throw new LoginSampleException( "the two passwords did not match" );
+            request.setAttribute("message", "Der skete en fejl - tjek venligst at dit password lever op til kravene.");
+            request.setAttribute("error", "Der skete en fejl.");
+            throw new LoginSampleException( "De to passwords er ikke ens." );
 
 
         }

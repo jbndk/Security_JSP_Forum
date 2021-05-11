@@ -61,7 +61,7 @@ public class LogicFacade {
             System.out.println("Password must have atleast one number");
             isValid = false;
         }
-        String specialChars = "(.*[@,#,$,%].*$)";
+        String specialChars = "(.*[@,#,$,%,!].*$)";
         if (!password.matches(specialChars)) {
             System.out.println("Password must have at least one special character among @#$%");
             isValid = false;

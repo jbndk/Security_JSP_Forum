@@ -29,28 +29,16 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class UploadServlet2 extends Command {
 
-    // location to store file uploaded
-    public static final String DEFAULT_FILENAME = "ForumFiles";
-
-    // upload settings
-    private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;  // 3MB
-    private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
-    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
-    public static final String UPLOAD_DIRECTORY = "upload";
-    String path = "C:\\ForumFiles\\";
-
-    /**
-     * Upon receiving file upload submission, parses the request to read
-     * upload data and saves the file on disk.
-     */
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ClassNotFoundException, ServletException, IOException {
 
+        AddPost addPost = new AddPost();
         String fileName = "";
         String path = "C:\\ForumFiles\\";
-
         List<String> extensions = Arrays.asList("jpg", "jpeg", "png", "JPG", "JPEG", "PNG");
+        boolean succeded = false;
+        String filePath = "";
 
         try {
             Part filePart = request.getPart("uploadFile");
@@ -61,17 +49,19 @@ public class UploadServlet2 extends Command {
             System.out.println(Arrays.toString(fileNameSplits));
             // add extension to id
             //File newName = new File(path + "/" + id + "." + fileNameSplits[extensionIndex]);
-
-            if (extensions.contains(fileNameSplits[extensionIndex])) {
-                for (Part part : request.getParts()) {
-                    System.out.println(part.getName());
-                    System.out.println(part.getSize());
-                    System.out.println(part.getContentType());
+            String fileExtension = fileNameSplits[extensionIndex];
+            if (extensions.contains(fileExtension)) {
+                //for (Part part : request.getParts()) {
+                    System.out.println(filePart.getName());
+                    System.out.println(filePart.getSize());
+                    System.out.println(filePart.getContentType());
                     UUID uuid = UUID.randomUUID();
-                    part.write(path + uuid + "." + fileNameSplits[extensionIndex]);
+                    filePart.write(path + uuid + "." + fileNameSplits[extensionIndex]);
                     request.setAttribute("message", "File "
                             + fileName + " was uploaded successfully!");
-                }
+                    succeded = true;
+                    path = path + uuid + "." + fileExtension;
+               // }
             } else {
                 request.setAttribute("message", "Filetype is not supported/allowed ");
             }
@@ -82,7 +72,21 @@ public class UploadServlet2 extends Command {
             System.out.println(e);
         }
 
-        return "uploadpage";
+        if(succeded) {
+            filePath = path;
+        } else {
+            filePath = "NA";
+        }
+
+        request.setAttribute("filePath", filePath);
+        String status = addPost.execute(request, response);
+
+        if(status.equals("success")) {
+            return "confirmation";
+        } else {
+            return "newPost";
+        }
+
     }
 
 }

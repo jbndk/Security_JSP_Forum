@@ -27,15 +27,17 @@ public class Login extends Command {
          System.out.println(gRecaptchaResponse);
          boolean verify = FunctionLayer.VerifyRecaptcha.verify(gRecaptchaResponse);
 
+        if(verify) {
+            HttpSession session = request.getSession();
 
-         HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+            session.setAttribute("role", user.getRole());
+            session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
 
-         session.setAttribute("user", user);
-         session.setAttribute("role", user.getRole());
-         session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
-
-         return user.getRole() + "page";
-
+            return user.getRole() + "page";
+        } else {
+            return "index";
+        }
      } catch (Exception e) {
          System.out.println("Login error: " + e);
          return "index";

@@ -37,5 +37,14 @@
         <input type="submit" value="Opret bruger">
     </form>
 <br>
-<p>"${requestScope.message}"</p>
+<p>${requestScope.message}</p>
+<br>
+<h5>Regler for passwords:</h5>
+<i>
+- Password must be less than 20 and more than 8 characters in length.<br>
+- Password must have at least one uppercase character<br>
+- Password must have at least one number<br>
+    - Password must have at least one special character among @#$%!<br>
+</i>
+<br>
 <%@include file="includes/footer.inc"%>
