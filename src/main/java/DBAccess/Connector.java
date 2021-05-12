@@ -30,14 +30,18 @@ public class Connector {
         String deployed = System.getenv("DEPLOYED");
 
         if (deployed != null) {
+
             //production(prod): hent variabelværdier fra setenv.sh
+            URL = System.getenv("CONNECTION_STR");    //System.getenv("JDBC_CONNECTION_STRING");
+            USERNAME = System.getenv("USER");                             //System.getenv("JDBC_USER");
+            PASSWORD = System.getenv("PW");                 //System.getenv("JDBC_PASSWORD");
+            /*
             URL = System.getenv("JDBC_CONNECTION_STRING");
             USERNAME = System.getenv("JDBC_USER");
             PASSWORD = System.getenv("JDBC_PASSWORD");
-
-
+            */
         } else {
-            URL = "jdbc:mysql://localhost:3306/forum?serverTimezone=CET&useSSL=false";
+            URL = "jdbc:mysql://localhost:3306/forum?allowPublicKeyRetrieval=true&serverTimezone=CET&useSSL=false";
             USERNAME = "dev";
             PASSWORD = "ax2";
         }

@@ -44,6 +44,7 @@
 - Password must be less than 20 and more than 8 characters in length.<br>
 - Password must have at least one uppercase character<br>
 - Password must have at least one number<br>
+    - Password can not contain whitespace<br>
     - Password must have at least one special character among @#$%!<br>
 </i>
 <br>

@@ -51,6 +51,9 @@ public class LogicFacade {
             System.out.println("Password must have atleast one uppercase character");
             isValid = false;
         }
+        if (!password.matches("^\\S*$")) {
+            isValid =false;
+        }
         String lowerCaseChars = "(.*[a-z].*)";
         if (!password.matches(lowerCaseChars)) {
             System.out.println("Password must have at least one lowercase character");

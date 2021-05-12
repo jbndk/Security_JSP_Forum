@@ -1,5 +1,6 @@
 package PresentationLayer;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,7 +40,7 @@ public class Log {
         logger.setLevel(Level.FINEST);   //Her sættes niveauet for logningen.
 
         logger.log(lvl, decription+"\n");
-        
+
 
         fh.close();
 

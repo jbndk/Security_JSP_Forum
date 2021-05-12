@@ -28,6 +28,7 @@ public class UploadServlet extends Command {
         String fileName = "";
         String filePath = "";
         String path = "C:\\ForumFiles\\";
+        //String path = "root/upl4";
 
         try {
             Part filePart = request.getPart("file");
