@@ -27,8 +27,8 @@ public class UploadServlet extends Command {
         boolean succeded = false;
         String fileName = "";
         String filePath = "";
-        String path = "C:\\ForumFiles\\";
-        //String path = "root/upl4";
+        //String path = "C:\\ForumFiles\\";
+        String path = "stats";
 
         try {
             Part filePart = request.getPart("file");

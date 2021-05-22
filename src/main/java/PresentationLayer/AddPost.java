@@ -28,6 +28,7 @@ public class AddPost extends Command {
             //System.out.println("Author:" + author);
 
             Post p = new Post(category, content, author, filePath);
+            Log.info("File: " + filePath + " was uploaded by user: "+ session.getAttribute("email").toString());
 
             PostMapper.addPost(p);
 

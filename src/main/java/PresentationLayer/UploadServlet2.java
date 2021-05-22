@@ -1,6 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+import PresentationLayer.Log;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,6 +62,7 @@ public class UploadServlet2 extends Command {
                             + fileName + " was uploaded successfully!");
                     succeded = true;
                     path = path + uuid + "." + fileExtension;
+
                // }
             } else {
                 request.setAttribute("message", "Filetype is not supported/allowed ");

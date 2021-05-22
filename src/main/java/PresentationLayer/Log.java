@@ -14,10 +14,11 @@ import java.util.logging.*;
 
 public class Log {
 
-    private static final String FILENAME = "log.txt";
+    //private static final String FILENAME = "log.txt";
+    private static final String FILENAME = "log4.txt";
     private static final String FILEPATH = "C:\\ForumFiles\\";
+    //private static final String FILEPATH = "stats";
 
-    //private static final String FILEPATH = "/var/log/tomcat9/";
     private static final String PATH = FILEPATH + FILENAME;
 
     private Log() {
